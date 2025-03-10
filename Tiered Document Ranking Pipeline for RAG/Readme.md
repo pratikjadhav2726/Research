@@ -15,6 +15,11 @@ This project implements a tiered document ranking pipeline for efficient Retriev
 	3.	Phase 3 - Synthesize (LLM Generation)
 	•	Pass top 10 documents to a Large Language Model (LLM) to generate a final response.
 
+
+![image](https://github.com/user-attachments/assets/c6d575b0-7355-4b2e-becc-c25d5d4b41eb)
+
+
+
 ### Tech Stack
 	•	Python (Core programming language)
 	•	BM25 via Pyserini
