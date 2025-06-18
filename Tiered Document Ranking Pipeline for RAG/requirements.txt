@@ -1,0 +1,24 @@
+# Python package dependencies for the Tiered Document Ranking Pipeline
+
+# Core pipeline components
+pyserini>=0.16.0 # Check for a recent stable version
+sentence-transformers>=2.2.0 # For CrossEncoder models
+openai>=1.0.0,<2.0.0 # For LLM interaction (using v1.x.x of openai lib)
+datasets>=2.0.0 # For loading datasets like MSMARCO
+
+# Dependencies often required by the above libraries
+torch>=1.8.0 # Backend for sentence-transformers and other ML tasks
+transformers>=4.10.0 # Often used by sentence-transformers and Pyserini indirectly
+
+# For running the pipeline and examples
+tqdm>=4.60.0 # For progress bars
+
+# Note: faiss-cpu was mentioned but its direct usage in the current Python script
+# is not apparent. If it's a transitive dependency or needed for specific Pyserini
+# dense index types (not used in the current BM25-focused script), it could be added.
+# For now, keeping it out unless a direct need is confirmed.
+# faiss-cpu
+
+# For development and testing (install separately or via a dev-requirements.txt)
+# pytest
+# pytest-mock
