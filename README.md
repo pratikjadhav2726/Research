@@ -1,8 +1,8 @@
 # 🧠 Research Prototypes & Knowledge Graphs
 
-Welcome to the **Research & Prototype Repository** by [@pratikjadhav2726](https://github.com/pratikjadhav2726) — a curated and expanding archive of experimental ideas, novel ML techniques, and practical research codebases designed for open exploration.
+Welcome to the **Research & Prototype Repository** by [@pratikjadhav2726](https://github.com/pratikjadhav2726) — a curated and expanding archive of experimental ideas, novel ML techniques, and prototypes.
 
-This repository serves as a **launchpad for fresh research directions** and **modular prototypes** that you can fork, remix, and scale. Each folder represents a unique thread of innovation across machine learning, LLMs, RAG systems, voice modeling, and more.
+This repository serves as a **launchpad for fresh research directions** and **modular prototypes** that you can fork, remix, and scale. Each folder represents a unique thread of innovation across multiple domains, from RAG to graph ML and more.
 
 ---
 
@@ -10,6 +10,8 @@ This repository serves as a **launchpad for fresh research directions** and **mo
 
 | Folder / Notebook | Area | Description |
 |-------------------|------|-------------|
+| **Agentic Hierarchical RAG** | Multi-Agent RAG/NLP | Advanced Retrieval-Augmented Generation with hierarchical, agent-based query decomposition, orchestration, and reasoning. [Learn more](https://arxiv.org/abs/2310.04324), [Agentic RAG blog](https://lilianweng.github.io/posts/2024-04-09-agentic-rag/), [Awesome RAG](https://github.com/hwchase17/langchain-hub/tree/main/rag) |
+| **EHR Multimodal RAG** | Healthcare AI / Multimodal | State-of-the-art RAG system for Electronic Health Records, supporting structured, text, and image modalities with clinical reasoning and privacy-first design. [See EHR_Multimodal_RAG/README.md](./EHR_Multimodal_RAG/README.md), [Clinical RAG paper](https://arxiv.org/abs/2311.06243), [MedKLIP](https://arxiv.org/abs/2211.10435) |
 | `Activation_functions_learnable_novel` | Deep Learning | Novel, learnable activation functions for enhanced expressivity |
 | `KnowledgeGraph` | Graph ML / LLM Tooling | Experiments involving structured knowledge for LLM reasoning |
 | `Model_distillation` | Compression | Survey + implementations of distillation methods for compact model design |
@@ -47,7 +49,7 @@ This repo is ideal for:
 
 ## 📈 SEO Tags
 
-`#MachineLearning` `#LLM` `#RAG` `#KnowledgeGraphs` `#Distillation` `#VoiceCloning` `#ExplainableAI` `#Neo4j` `#LangChain` `#ResearchPrototypes` `#PEFT` `#LoRA` `#Bloom` `#Guanaco` `#AIResearch` `#ColabNotebooks`
+`#MachineLearning` `#LLM` `#RAG` `#KnowledgeGraphs` `#Distillation` `#VoiceCloning` `#ExplainableAI` `#Neo4j` `#LangChain` `#ResearchPrototypes` `#PEFT` `#LoRA` `#Bloom` `#Guanaco` `#AIResearch` `#HealthcareAI` `#MultimodalRAG` `#AgenticRAG`
 
 ---
 
