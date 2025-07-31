@@ -1,0 +1,38 @@
+# Default configuration for Agentic Hierarchical RAG
+
+# Embedding configuration
+embedding_model: "sentence-transformers/all-MiniLM-L6-v2"
+embedding_batch_size: 32
+
+# Chunking configuration
+chunk_size: 512
+chunk_overlap: 50
+chunking_strategy: "sliding_window"  # Options: fixed_size, semantic, sentence, paragraph, sliding_window
+
+# RAPTOR indexing configuration
+clustering_method: "gmm"  # Options: gmm, kmeans
+min_cluster_size: 3
+max_cluster_size: 10
+reduction_factor: 0.5
+max_levels: 5
+
+# Agentic controller configuration
+max_iterations: 5
+confidence_threshold: 0.7
+
+# Retrieval configuration
+retrieval_top_k: 5
+retrieval_strategy: "adaptive"  # Options: adaptive, collapsed_tree, level_specific
+
+# Vector store configuration
+vector_index_type: "flat"  # Options: flat, ivf, hnsw
+vector_metric: "cosine"  # Options: cosine, l2, ip
+
+# Evaluation configuration
+evaluation_output_dir: "evaluation_results"
+benchmark_output_dir: "benchmark_results"
+
+# System configuration
+log_level: "INFO"
+save_intermediate_results: true
+show_progress_bars: true
