@@ -1,0 +1,263 @@
+# EHR Multimodal RAG Configuration
+
+# Model Architecture Settings
+model:
+  # Base multimodal encoder
+  encoder:
+    type: "clinical_clip"  # Options: clinical_clip, biomed_clip, custom
+    model_name: "microsoft/BiomedCLIP-PubMedBERT_256-vit_base_patch16_224"
+    embedding_dim: 768
+    max_text_length: 512
+    image_size: 224
+    freeze_backbone: false
+    
+  # Clinical text encoder
+  text_encoder:
+    model_name: "microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract-fulltext"
+    max_length: 512
+    pooling_strategy: "mean"  # Options: mean, cls, max
+    
+  # Medical image encoder
+  vision_encoder:
+    model_name: "google/vit-base-patch16-224"
+    pretrained_weights: "medical_imagenet"
+    input_size: [224, 224]
+    patch_size: 16
+    
+  # Hierarchical embedding
+  hierarchical:
+    enable: true
+    levels: ["symptom", "diagnosis", "treatment", "outcome"]
+    hierarchy_weight: 0.3
+
+# Clinical Knowledge Integration
+clinical_knowledge:
+  ontologies:
+    snomed_ct:
+      path: "data/medical_ontologies/snomed_ct.owl"
+      version: "2023-07-31"
+      enable: true
+    icd10:
+      path: "data/medical_ontologies/icd10.json"
+      version: "2023"
+      enable: true
+    loinc:
+      path: "data/medical_ontologies/loinc.csv"
+      version: "2.74"
+      enable: true
+    rxnorm:
+      path: "data/medical_ontologies/rxnorm.rrf"
+      enable: true
+      
+  medical_embeddings:
+    use_pretrained: true
+    model_path: "clinical-embeddings/medical-concepts-v1"
+    alignment_weight: 0.4
+
+# Retrieval Configuration
+retrieval:
+  # Vector database settings
+  vector_db:
+    provider: "chromadb"  # Options: chromadb, pinecone, weaviate, qdrant
+    collection_name: "ehr_multimodal"
+    distance_metric: "cosine"  # Options: cosine, euclidean, dot_product
+    index_type: "hnsw"
+    
+  # Search parameters
+  search:
+    top_k: 20
+    similarity_threshold: 0.7
+    max_tokens_per_chunk: 1000
+    overlap_ratio: 0.2
+    
+  # Agentic retrieval
+  agentic:
+    enable: true
+    max_iterations: 3
+    reasoning_model: "gpt-4-turbo"
+    confidence_threshold: 0.8
+    
+  # Multi-modal fusion
+  fusion:
+    strategy: "intermediate"  # Options: early, intermediate, late
+    attention_mechanism: "cross_modal"
+    fusion_layers: 2
+    temperature: 0.1
+
+# Generation Configuration
+generation:
+  # Base LLM
+  llm:
+    provider: "openai"  # Options: openai, anthropic, local
+    model_name: "gpt-4-turbo"
+    temperature: 0.1
+    max_tokens: 2048
+    top_p: 0.9
+    
+  # Clinical fine-tuning
+  clinical_adaptation:
+    use_medical_lora: true
+    lora_rank: 16
+    lora_alpha: 32
+    target_modules: ["q_proj", "v_proj", "k_proj", "o_proj"]
+    
+  # Hallucination prevention
+  hallucination_control:
+    enable: true
+    confidence_scoring: true
+    fact_verification: true
+    medical_knowledge_grounding: true
+    uncertainty_quantification: true
+    
+  # Response formatting
+  output_format:
+    structured_response: true
+    include_confidence: true
+    cite_sources: true
+    highlight_uncertainties: true
+
+# Data Processing
+data_processing:
+  # DICOM processing
+  dicom:
+    supported_modalities: ["CT", "MRI", "XR", "US", "MG", "PT"]
+    normalization: "z_score"
+    resize_strategy: "maintain_aspect_ratio"
+    window_settings:
+      lung: [-1000, 400]
+      bone: [-400, 1000]
+      soft_tissue: [-160, 240]
+      
+  # Clinical text processing
+  text:
+    preprocessing:
+      lowercase: false  # Preserve medical abbreviations
+      remove_phi: true
+      anonymize_dates: true
+      preserve_medical_terms: true
+    
+    clinical_ner:
+      models: ["en_ner_bc5cdr_md", "en_ner_bionlp13cg_md"]
+      entity_types: ["DISEASE", "CHEMICAL", "GENE", "ANATOMY"]
+      
+  # Structured data
+  structured:
+    lab_values:
+      normalize: true
+      reference_ranges: true
+      temporal_features: true
+    vital_signs:
+      sampling_rate: "1min"
+      outlier_detection: true
+      
+  # Temporal alignment
+  temporal:
+    time_resolution: "1h"
+    max_lookback: "30d"
+    alignment_strategy: "nearest_neighbor"
+
+# Privacy and Security
+privacy:
+  # HIPAA compliance
+  hipaa:
+    enable: true
+    audit_logging: true
+    access_controls: true
+    data_minimization: true
+    
+  # Differential privacy
+  differential_privacy:
+    enable: true
+    epsilon: 1.0
+    delta: 1e-5
+    noise_mechanism: "gaussian"
+    
+  # Federated learning
+  federated:
+    enable: false
+    aggregation_strategy: "fedavg"
+    min_clients: 3
+    
+  # Encryption
+  encryption:
+    at_rest: true
+    in_transit: true
+    key_management: "aws_kms"
+
+# Evaluation and Monitoring
+evaluation:
+  # Clinical metrics
+  clinical_metrics:
+    - "medical_concept_precision"
+    - "cross_modal_consistency" 
+    - "temporal_coherence"
+    - "diagnostic_accuracy"
+    
+  # Retrieval metrics
+  retrieval_metrics:
+    - "clinical_relevance_at_k"
+    - "multimodal_coverage"
+    - "semantic_similarity"
+    
+  # Generation metrics
+  generation_metrics:
+    - "medical_factuality"
+    - "hallucination_rate"
+    - "clinical_utility"
+    - "response_completeness"
+    
+  # Benchmarks
+  benchmarks:
+    - "clinical_qa"
+    - "medical_image_retrieval"
+    - "diagnostic_reasoning"
+    
+# Logging and Monitoring
+logging:
+  level: "INFO"
+  format: "structured"
+  outputs: ["console", "file", "mlflow"]
+  
+monitoring:
+  enable: true
+  metrics_backend: "prometheus"
+  visualization: "grafana"
+  alerts:
+    hallucination_threshold: 0.1
+    latency_threshold: "5s"
+    error_rate_threshold: 0.05
+
+# Deployment
+deployment:
+  # API settings
+  api:
+    host: "0.0.0.0"
+    port: 8000
+    workers: 4
+    timeout: 300
+    
+  # Scaling
+  scaling:
+    auto_scale: true
+    min_replicas: 1
+    max_replicas: 10
+    target_cpu: 70
+    
+  # Caching
+  caching:
+    enable: true
+    backend: "redis"
+    ttl: 3600  # 1 hour
+    
+# Development and Testing
+development:
+  debug: false
+  profiling: false
+  synthetic_data: true
+  mock_external_apis: false
+  
+testing:
+  unit_tests: true
+  integration_tests: true
+  performance_tests: true
+  clinical_validation: true

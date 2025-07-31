@@ -1,0 +1,108 @@
+# Core ML and AI frameworks
+torch>=2.0.0
+torchvision>=0.15.0
+transformers>=4.35.0
+sentence-transformers>=2.2.2
+langchain>=0.1.0
+langchain-community>=0.0.10
+langchain-openai>=0.0.5
+openai>=1.0.0
+
+# Multimodal and Vision
+clip-by-openai>=1.0
+timm>=0.9.0
+Pillow>=10.0.0
+opencv-python>=4.8.0
+scikit-image>=0.21.0
+
+# Medical and Healthcare specific
+pydicom>=2.4.0
+nibabel>=5.1.0
+SimpleITK>=2.3.0
+medpy>=0.4.0
+biopython>=1.81
+python-gdcm>=3.0.0
+
+# NLP and Text Processing
+spacy>=3.7.0
+scispacy>=0.5.3
+nltk>=3.8.1
+textstat>=0.7.3
+python-levenshtein>=0.21.0
+
+# Medical Ontologies and Knowledge Bases
+owlready2>=0.45
+rdflib>=7.0.0
+networkx>=3.1.0
+neo4j>=5.13.0
+
+# Vector Databases and Search
+chromadb>=0.4.0
+faiss-cpu>=1.7.4
+pinecone-client>=2.2.4
+weaviate-client>=3.25.0
+qdrant-client>=1.6.0
+
+# Data Processing and Analysis
+pandas>=2.1.0
+numpy>=1.24.0
+scipy>=1.11.0
+matplotlib>=3.7.0
+seaborn>=0.12.0
+plotly>=5.17.0
+
+# Privacy and Security
+cryptography>=41.0.0
+pycryptodome>=3.19.0
+differential-privacy>=1.1.5
+opacus>=1.4.0
+
+# Evaluation and Metrics
+scikit-learn>=1.3.0
+rouge-score>=0.1.2
+bert-score>=0.3.13
+evaluate>=0.4.0
+datasets>=2.14.0
+
+# API and Web Services
+fastapi>=0.104.0
+uvicorn>=0.24.0
+requests>=2.31.0
+httpx>=0.25.0
+streamlit>=1.28.0
+
+# Configuration and Utilities
+pydantic>=2.4.0
+python-dotenv>=1.0.0
+pyyaml>=6.0.1
+tqdm>=4.66.0
+rich>=13.6.0
+click>=8.1.7
+
+# Jupyter and Development
+jupyter>=1.0.0
+jupyterlab>=4.0.0
+notebook>=7.0.0
+ipywidgets>=8.1.0
+
+# Testing and Quality
+pytest>=7.4.0
+pytest-cov>=4.1.0
+black>=23.9.0
+flake8>=6.1.0
+mypy>=1.6.0
+
+# Monitoring and Logging
+wandb>=0.16.0
+mlflow>=2.7.0
+loguru>=0.7.2
+prometheus-client>=0.18.0
+
+# Medical Image Processing (Optional - install based on need)
+# itk>=5.3.0
+# vtk>=9.2.0
+# ants>=0.4.0
+
+# GPU acceleration (Optional - for CUDA support)
+# torch-audio>=2.0.0  # For audio processing if needed
+# accelerate>=0.24.0  # For distributed training
