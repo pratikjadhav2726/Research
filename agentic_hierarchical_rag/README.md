@@ -3,6 +3,8 @@
 ## Overview
 
 Agentic Hierarchical RAG (AH-RAG) is a novel framework that merges the adaptive, decision-making capabilities of Self-RAG with the multi-level abstraction of RAPTOR. This architecture enables intelligent, goal-directed retrieval that dynamically adapts its search strategy based on query requirements.
+<img width="2257" height="1462" alt="diagram-export-8-21-2025-12_49_03-AM" src="https://github.com/user-attachments/assets/bef01121-4b2f-4c6c-a1c9-6fedbce8fb28" />
+
 
 ## Architecture Components
 
